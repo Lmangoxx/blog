@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head>
   <meta charset="utf-8">
   
   <title>Workbox 入门 | Hans Chan&#39;s Blog</title>
@@ -37,8 +37,8 @@
     <link rel="icon" href="favicon.ico">
   
   
- <link href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600" rel="stylesheet" type="text/css">
- <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+ <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+ <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
 
 
   <link rel="stylesheet" href="/blog/css/style.css">
@@ -73,11 +73,11 @@ ga('send', 'pageview');
 
 
   
-<meta name="google-site-verification" content="w7Jze6jotMvxHSzsNqwEukg5f2L6VNFgRcPZBwBGln8">
+<meta name="google-site-verification" content="w7Jze6jotMvxHSzsNqwEukg5f2L6VNFgRcPZBwBGln8" />
 
 
   
-</head></html>
+</head>
 <body>
   <div id="container">
     <header id="header">
@@ -162,7 +162,7 @@ ga('send', 'pageview');
 </aside>
 
       
-      <section id="main"><article id="post-workbox" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <section id="main"><article id="post-workbox" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       
@@ -217,7 +217,7 @@ ga('send', 'pageview');
 <p>同样的，我们可以继续添加其他的一些缓存策略来应对 css、图片文件：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// CSS 请求: 缓存优先，同时后台更新后下次打开页面才会被页面使用</span></span><br><span class="line">workbox.routing.registerRoute(</span><br><span class="line">  <span class="comment">// Cache CSS files</span></span><br><span class="line">  /.*\.css/,</span><br><span class="line">  <span class="comment">// Use cache but update in the background ASAP</span></span><br><span class="line">  workbox.strategies.staleWhileRevalidate(&#123;</span><br><span class="line">    <span class="comment">// Use a custom cache name</span></span><br><span class="line">    cacheName: <span class="string">'workbox:css'</span>,</span><br><span class="line">  &#125;)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 图片请求: 缓存优先</span></span><br><span class="line">workbox.routing.registerRoute(</span><br><span class="line">  <span class="comment">// Cache image files</span></span><br><span class="line">  /.*\.(?:png|jpg|jpeg|svg|gif)/,</span><br><span class="line">  <span class="comment">// Use the cache if it's available</span></span><br><span class="line">  workbox.strategies.cacheFirst(&#123;</span><br><span class="line">    <span class="comment">// Use a custom cache name</span></span><br><span class="line">    cacheName: <span class="string">'workbox:image'</span>,</span><br><span class="line">    plugins: [</span><br><span class="line">      <span class="keyword">new</span> workbox.expiration.Plugin(&#123;</span><br><span class="line">        <span class="comment">// Cache only 20 images</span></span><br><span class="line">        maxEntries: <span class="number">20</span>,</span><br><span class="line">        <span class="comment">// Cache for a maximum of a week</span></span><br><span class="line">        maxAgeSeconds: <span class="number">7</span> * <span class="number">24</span> * <span class="number">60</span> * <span class="number">60</span>,</span><br><span class="line">      &#125;)</span><br><span class="line">    ],</span><br><span class="line">  &#125;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 <p>对于这样一个简单的页面：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;link rel=<span class="string">"stylesheet"</span> href=<span class="string">"./css/style.css"</span>&gt;</span><br><span class="line">&lt;<span class="regexp">/head&gt;</span></span><br><span class="line"><span class="regexp">&lt;body&gt;</span></span><br><span class="line"><span class="regexp">  &lt;h1&gt;Workbox Get Started&lt;/</span>h1&gt;</span><br><span class="line">  &lt;img src=<span class="string">"./images/google.local.png"</span> alt=<span class="string">"同域的文件"</span>&gt;</span><br><span class="line">  &lt;script src=<span class="string">"./js/index.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;<span class="regexp">/body&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>html&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;link rel=<span class="string">"stylesheet"</span> href=<span class="string">"./css/style.css"</span>&gt;</span><br><span class="line">&lt;<span class="regexp">/head&gt;</span></span><br><span class="line"><span class="regexp">&lt;body&gt;</span></span><br><span class="line"><span class="regexp">  &lt;h1&gt;Workbox Get Started&lt;/</span>h1&gt;</span><br><span class="line">  &lt;img src=<span class="string">"./images/google.local.png"</span> alt=<span class="string">"同域的文件"</span>&gt;</span><br><span class="line">  &lt;script src=<span class="string">"./js/index.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;<span class="regexp">/body&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>html&gt;</span><br></pre></td></tr></table></figure>
 <h3><span id="1">#1</span></h3><p>我们可以看看第一次访问时的效果：<br><img src="/blog/2018/02/workbox/gs1.png" title="Web 第一次访问时的效果"></p>
 <p>和平常的访问没有任何区别，只是多了 sw.js 及其依赖（workbox 等）的请求，并在 <code>Application &gt; Service Workers</code> 中可以看到 sw.js 已经被注册（但其中的 fetch 事件无法在这次访问就被捕获）。</p>
 <h3><span id="2">#2</span></h3><p>于是我们刷新页面看看效果：<br><img src="/blog/2018/02/workbox/gs2.png" title="Web 第二次访问时的效果"></p>
@@ -320,7 +320,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://csbun.github.io/blog/2018/02/workbox/" data-id="cjpl81rgi0024wwq9q1h71ikb" class="article-share-link">Share</a>
+      <a data-url="http://csbun.github.io/blog/2018/02/workbox/" data-id="cjplcl2k70001shq9g1uqgaxw" class="article-share-link">Share</a>
       
         <a href="http://csbun.github.io/blog/2018/02/workbox/#disqus_thread" class="article-comment-link">Comments</a>
       

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head>
   <meta charset="utf-8">
   
   <title>译文：Puppeteer 与 Chrome Headless —— 从入门到爬虫 | Hans Chan&#39;s Blog</title>
@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://github.com/csbun/thal/raw/master/media/copy-selector.png">
 <meta property="og:image" content="https://github.com/csbun/thal/raw/master/media/num-results-new.png">
 <meta property="og:image" content="https://github.com/csbun/thal/raw/master/media/whoa.png">
-<meta property="og:updated_time" content="2018-12-12T13:06:56.897Z">
+<meta property="og:updated_time" content="2018-12-12T15:53:45.967Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="译文：Puppeteer 与 Chrome Headless —— 从入门到爬虫">
 <meta name="twitter:description" content="这里是 GitHub 英文原文 / Medium 英文原文  Puppeteer 是 Google Chrome 团队官方的无界面（Headless）Chrome 工具。正因为这个官方声明，许多业内自动化测试库都已经停止维护，包括 PhantomJS。Selenium IDE for Firefox 项目也因为缺乏维护者而终止。  译者注：关于 PhantomJS 和 Selenium IDE f">
@@ -32,8 +32,8 @@
     <link rel="icon" href="favicon.ico">
   
   
- <link href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600" rel="stylesheet" type="text/css">
- <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+ <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+ <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
 
 
   <link rel="stylesheet" href="/blog/css/style.css">
@@ -68,11 +68,11 @@ ga('send', 'pageview');
 
 
   
-<meta name="google-site-verification" content="w7Jze6jotMvxHSzsNqwEukg5f2L6VNFgRcPZBwBGln8">
+<meta name="google-site-verification" content="w7Jze6jotMvxHSzsNqwEukg5f2L6VNFgRcPZBwBGln8" />
 
 
   
-</head></html>
+</head>
 <body>
   <div id="container">
     <header id="header">
@@ -157,7 +157,7 @@ ga('send', 'pageview');
 </aside>
 
       
-      <section id="main"><article id="post-puppeteer" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <section id="main"><article id="post-puppeteer" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
@@ -207,8 +207,8 @@ ga('send', 'pageview');
 <h2><span id="初始化项目">初始化项目</span></h2><p>项目都是以创建文件夹开始。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> mkdir thal</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> thal</span></span><br></pre></td></tr></table></figure>
 <p>初始化 NPM，填入一些必要的信息。</p>
-<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">npm</span> init</span><br></pre></td></tr></table></figure>
-<p>安装 <code>Puppeteer</code>。由于 <code>Puppeteer</code> 并不是稳定的版本而且每天都在更新，所以如果你想要最新的功能可以直接通过 GitHub 的<a href="https://github.com/GoogleChrome/puppeteer" target="_blank" rel="noopener">仓库</a>安装。<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm <span class="selector-tag">i</span> --save puppeteer</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> npm init</span></span><br></pre></td></tr></table></figure>
+<p>安装 <code>Puppeteer</code>。由于 <code>Puppeteer</code> 并不是稳定的版本而且每天都在更新，所以如果你想要最新的功能可以直接通过 GitHub 的<a href="https://github.com/GoogleChrome/puppeteer" target="_blank" rel="noopener">仓库</a>安装。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> npm i --save puppeteer</span></span><br></pre></td></tr></table></figure></p>
 <p>Puppeteer 包含了自己的 chrome / chromium 用以确保可以无界面地工作。因此每当你安装/更新 puppeteer 的时候，他都会下载指定的 chrome 版本。</p>
 <h2><span id="编码">编码</span></h2><p>我们将从页面截图开始，这是他们的文档中的代码。</p>
 <h3><span id="页面截图">页面截图</span></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> puppeteer = <span class="built_in">require</span>(<span class="string">'puppeteer'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">run</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> browser = <span class="keyword">await</span> puppeteer.launch();</span><br><span class="line">  <span class="keyword">const</span> page = <span class="keyword">await</span> browser.newPage();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">await</span> page.goto(<span class="string">'https://github.com'</span>);</span><br><span class="line">  <span class="keyword">await</span> page.screenshot(&#123;<span class="attr">path</span>: <span class="string">'screenshots/github.png'</span>&#125;);</span><br><span class="line"></span><br><span class="line">  browser.close();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">run();</span><br></pre></td></tr></table></figure>
@@ -266,7 +266,7 @@ ga('send', 'pageview');
 <p>在添加了遍历页码的代码在上面爬取内容的方法之后，代码变成了这样：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numPages = <span class="keyword">await</span> getNumPages(page);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Numpages: '</span>, numPages);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> h = <span class="number">1</span>; h &lt;= numPages; h++) &#123;</span><br><span class="line">  <span class="comment">// 跳转到指定页码</span></span><br><span class="line">  <span class="keyword">await</span> page.goto(<span class="string">`<span class="subst">$&#123;searchUrl&#125;</span>&amp;p=<span class="subst">$&#123;h&#125;</span>`</span>);</span><br><span class="line">  <span class="comment">// 执行爬取</span></span><br><span class="line">  <span class="keyword">const</span> users = <span class="keyword">await</span> page.evaluate(<span class="function">(<span class="params">sInfo, sName, sEmail</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Array</span>.prototype.slice.apply(<span class="built_in">document</span>.querySelectorAll(sInfo))</span><br><span class="line">      .map(<span class="function"><span class="params">$userListItem</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// 用户名</span></span><br><span class="line">        <span class="keyword">const</span> username = $userListItem.querySelector(sName).innerText;</span><br><span class="line">        <span class="comment">// 邮箱</span></span><br><span class="line">        <span class="keyword">const</span> $email = $userListItem.querySelector(sEmail);</span><br><span class="line">        <span class="keyword">const</span> email = $email ? $email.innerText : <span class="literal">undefined</span>;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">          username,</span><br><span class="line">          email,</span><br><span class="line">        &#125;;</span><br><span class="line">      &#125;)</span><br><span class="line">      <span class="comment">// 不是所有用户都显示邮箱</span></span><br><span class="line">      .filter(<span class="function"><span class="params">u</span> =&gt;</span> !!u.email);</span><br><span class="line">  &#125;, USER_LIST_INFO_SELECTOR, USER_LIST_USERNAME_SELECTOR, USER_LIST_EMAIL_SELECTOR);</span><br><span class="line"></span><br><span class="line">  users.map(<span class="function">(<span class="params">&#123;username, email&#125;</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// <span class="doctag">TODO:</span> 保存用户信息</span></span><br><span class="line">    <span class="built_in">console</span>.log(username, <span class="string">'-&gt;'</span>, email);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3><span id="保存到-mongodb">保存到 MongoDB</span></h3><p>到这里 <code>Puppeteer</code> 的部分已经结束了。下面我们将使用 <code>mongoose</code> 存储上面的信息到 <code>MongoDB</code>。它是个 <a href="https://en.wikipedia.org/wiki/Object-relational_mapping" target="_blank" rel="noopener">ORM</a>，确切说是个便于从数据库进行信息存储和检索的库。</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm <span class="selector-tag">i</span> --save mongoose</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> npm i --save mongoose</span></span><br></pre></td></tr></table></figure>
 <p>MongoDB 是一个 Schema-less 的 NoSQL 数据库，但我们可以使用 Mongoose 使其遵循一些原则。首先我们需要创建一个 <code>Model</code>，他代表 MongoDB 中的 <code>Collection</code>。创建一个 <code>models</code> 文件夹，然后在里面创建一个 <code>user.js</code> 文件，并加入以下 collection 的构造函数代码。之后无论我们塞什么东西进 <code>User</code>，他都会遵循这个结构。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> userSchema = <span class="keyword">new</span> mongoose.Schema(&#123;</span><br><span class="line">    username: <span class="built_in">String</span>,</span><br><span class="line">    email: <span class="built_in">String</span>,</span><br><span class="line">    dateCrawled: <span class="built_in">Date</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = mongoose.model(<span class="string">'User'</span>, userSchema);</span><br></pre></td></tr></table></figure>
 <p>现在我们可以开始往数据库塞数据了。由于我们不希望数据库中存在重复的 email，所以我们只新增那些以前从没出现过的邮箱，否则我们只更新数据。为此，我们需要使用 mongoose 的 <code>Model.findOneAndUpdate</code> 方法。</p>
@@ -301,7 +301,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://csbun.github.io/blog/2017/09/puppeteer/" data-id="cjpl81rgh0022wwq989tvtqca" class="article-share-link">Share</a>
+      <a data-url="http://csbun.github.io/blog/2017/09/puppeteer/" data-id="cjpld030y0002ghq93sg26m0j" class="article-share-link">Share</a>
       
         <a href="http://csbun.github.io/blog/2017/09/puppeteer/#disqus_thread" class="article-comment-link">Comments</a>
       
