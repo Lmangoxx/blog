@@ -253,15 +253,11 @@ ga('send', 'pageview');
 <p>从第 7 至 9 行可以看到， <code>locate</code> 和 <code>fromNow</code> 并没有被 export，虽然下方还能看到这两个方法的声明，但是只要经过 UglifyJs，这两个方法必然 <a href="http://www.2ality.com/2015/12/webpack-tree-shaking.html#how_webpack_2_eliminates_unused_exports" target="_blank" rel="noopener">会被消除</a>：</p>
 <blockquote>
 <h5><span id="how-webpack-2-eliminates-unused-exports">How webpack 2 eliminates unused exports</span></h5><p>webpack 2, a new version that is in beta, eliminates unused exports in two steps:</p>
-</blockquote>
-<blockquote>
 <ul>
-<li>First, all ES6 module files are combined into a single bundle file. In that file, exports that were not imported anywhere are not exported, anymore.</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>Second, the bundle is minified, while eliminating dead code. Therefore, entities that are neither exported nor used inside their modules do not appear in the minified bundle. Without the first step, dead code elimination would never remove exports (registering an export keeps it alive).</li>
+<li><p>First, all ES6 module files are combined into a single bundle file. In that file, exports that were not imported anywhere are not exported, anymore.</p>
+</li>
+<li><p>Second, the bundle is minified, while eliminating dead code. Therefore, entities that are neither exported nor used inside their modules do not appear in the minified bundle. Without the first step, dead code elimination would never remove exports (registering an export keeps it alive).</p>
+</li>
 </ul>
 </blockquote>
 <p>可以运行 <code>webpack --optimize-minimize</code> 看到执行效果：</p>
@@ -275,9 +271,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://csbun.github.io/blog/2015/12/tree-shaking-es2015/" data-id="cjplck7fx0017qcq9o52f0qgl" class="article-share-link">Share</a>
-      
-        <a href="http://csbun.github.io/blog/2015/12/tree-shaking-es2015/#disqus_thread" class="article-comment-link">Comments</a>
+      <a data-url="http://csbun.github.io/blog/2015/12/tree-shaking-es2015/" data-id="cjq9702gz001j6cq90tt2v9k8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Browserify/">Browserify</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/ES2015/">ES2015</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Rollup/">Rollup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/webpack/">webpack</a></li></ul>
@@ -310,11 +304,7 @@ ga('send', 'pageview');
 </article>
 
 
-<section id="comments">
-  <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  </div>
-</section>
+  <section id="comments"></section>
 
 </section>
       
@@ -452,21 +442,28 @@ ga('send', 'pageview');
       </a>
     </div>
     <div id="footer-info" class="inner">
-      &copy; 2014 - 2018 叉起来就可以烧<br>
+      &copy; 2014 - 2019 叉起来就可以烧<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
     </div>
   </div>
 </footer>
     
 
-<script>
-  var disqus_shortname = 'csbun';
-  (function(){
-    var dsq = document.createElement('script');
-    dsq.type = 'text/javascript';
-    dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+  (function() {
+    const gitalk = new Gitalk({
+      clientID: '445f3ebe09ddd1d6a1eb',
+      clientSecret: '677a9844625ec22c3e39dcea819678794bb84d71',
+      repo: 'blog',
+      owner: 'csbun',
+      admin: ['csbun'],
+      id: location.pathname,      // Ensure uniqueness and length less than 50
+      // createIssueManually: true,
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+    });
+    gitalk.render('comments')
   })();
 </script>
 

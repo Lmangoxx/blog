@@ -234,9 +234,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://csbun.github.io/blog/2017/08/npm-scripts/" data-id="cjplcm3lx0000u9q9ibyvpbq4" class="article-share-link">Share</a>
-      
-        <a href="http://csbun.github.io/blog/2017/08/npm-scripts/#disqus_thread" class="article-comment-link">Comments</a>
+      <a data-url="http://csbun.github.io/blog/2017/08/npm-scripts/" data-id="cjq9702h7001z6cq9k0cpokic" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/install/">install</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/npm/">npm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/publish/">publish</a></li></ul>
@@ -269,11 +267,7 @@ ga('send', 'pageview');
 </article>
 
 
-<section id="comments">
-  <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  </div>
-</section>
+  <section id="comments"></section>
 
 </section>
       
@@ -411,21 +405,28 @@ ga('send', 'pageview');
       </a>
     </div>
     <div id="footer-info" class="inner">
-      &copy; 2014 - 2018 叉起来就可以烧<br>
+      &copy; 2014 - 2019 叉起来就可以烧<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
     </div>
   </div>
 </footer>
     
 
-<script>
-  var disqus_shortname = 'csbun';
-  (function(){
-    var dsq = document.createElement('script');
-    dsq.type = 'text/javascript';
-    dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+  (function() {
+    const gitalk = new Gitalk({
+      clientID: '445f3ebe09ddd1d6a1eb',
+      clientSecret: '677a9844625ec22c3e39dcea819678794bb84d71',
+      repo: 'blog',
+      owner: 'csbun',
+      admin: ['csbun'],
+      id: location.pathname,      // Ensure uniqueness and length less than 50
+      // createIssueManually: true,
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+    });
+    gitalk.render('comments')
   })();
 </script>
 

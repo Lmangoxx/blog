@@ -9,7 +9,7 @@
   <meta property="algolia:search" data-application-id="1DJDVE2IL4" data-api-key="c784a416f2e153ae75b1288ed8c3b0d8" data-index-name="BLOG">
 
   <meta name="description" content="使用 Generator 简化异步回调12345678910111213var gen;function async() &amp;#123;    setTimeout(function () &amp;#123;        gen.next(100);    &amp;#125;);&amp;#125;function * genFn() &amp;#123;    var res = yield async();    con">
-<meta name="keywords" content="async,koa,generator">
+<meta name="keywords" content="koa,async,generator">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Koa 中异步方法的使用">
 <meta property="og:url" content="http://csbun.github.io/blog/2014/09/koa-async-usage/index.html">
@@ -204,9 +204,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://csbun.github.io/blog/2014/09/koa-async-usage/" data-id="cjpl822gj0025xqq9zy885gzc" class="article-share-link">Share</a>
-      
-        <a href="http://csbun.github.io/blog/2014/09/koa-async-usage/#disqus_thread" class="article-comment-link">Comments</a>
+      <a data-url="http://csbun.github.io/blog/2014/09/koa-async-usage/" data-id="cjq9702fh00026cq9bqkc667e" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/async/">async</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/generator/">generator</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/koa/">koa</a></li></ul>
@@ -234,11 +232,7 @@ ga('send', 'pageview');
 </article>
 
 
-<section id="comments">
-  <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  </div>
-</section>
+  <section id="comments"></section>
 
 </section>
       
@@ -376,21 +370,28 @@ ga('send', 'pageview');
       </a>
     </div>
     <div id="footer-info" class="inner">
-      &copy; 2014 - 2018 叉起来就可以烧<br>
+      &copy; 2014 - 2019 叉起来就可以烧<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
     </div>
   </div>
 </footer>
     
 
-<script>
-  var disqus_shortname = 'csbun';
-  (function(){
-    var dsq = document.createElement('script');
-    dsq.type = 'text/javascript';
-    dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+  (function() {
+    const gitalk = new Gitalk({
+      clientID: '445f3ebe09ddd1d6a1eb',
+      clientSecret: '677a9844625ec22c3e39dcea819678794bb84d71',
+      repo: 'blog',
+      owner: 'csbun',
+      admin: ['csbun'],
+      id: location.pathname,      // Ensure uniqueness and length less than 50
+      // createIssueManually: true,
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+    });
+    gitalk.render('comments')
   })();
 </script>
 

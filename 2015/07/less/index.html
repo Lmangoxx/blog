@@ -203,7 +203,7 @@ ga('send', 'pageview');
 </blockquote>
 <p><code>globalVars</code> 和 <code>modifyVars</code> 非常好用，因为有了这两个配置，就可以把 js 里面的一些变量传递到 less 中。<code>globalVars</code> 可以做默认值，<code>modifyVars</code>做重置值。</p>
 <h3><span id="命令行">命令行</span></h3><p><code>lessc</code> 是标准输出</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lessc <span class="keyword">file</span>.<span class="keyword">less</span> &gt; out.css</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">lessc</span> <span class="selector-tag">file</span><span class="selector-class">.less</span> &gt; <span class="selector-tag">out</span><span class="selector-class">.css</span></span><br></pre></td></tr></table></figure>
 <p>具体用法还是看<a href="http://lesscss.org/#using-less-command-line-usage" target="_blank" rel="noopener">官网</a>吧。</p>
 <h2><span id="语法">语法</span></h2><h3><span id="嵌套">嵌套</span></h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#333</span>;</span><br><span class="line">    .main &#123;</span><br><span class="line">        <span class="selector-tag">background</span>: <span class="selector-id">#eee</span>;</span><br><span class="line">        <span class="selector-tag">p</span> &#123;</span><br><span class="line">            <span class="attribute">color</span>: <span class="number">#666</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>编译后：</p>
@@ -255,9 +255,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://csbun.github.io/blog/2015/07/less/" data-id="cjplck7fi000lqcq90meuqxn3" class="article-share-link">Share</a>
-      
-        <a href="http://csbun.github.io/blog/2015/07/less/#disqus_thread" class="article-comment-link">Comments</a>
+      <a data-url="http://csbun.github.io/blog/2015/07/less/" data-id="cjq9702gf000n6cq96k8gctnm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/less/">less</a></li></ul>
@@ -290,11 +288,7 @@ ga('send', 'pageview');
 </article>
 
 
-<section id="comments">
-  <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  </div>
-</section>
+  <section id="comments"></section>
 
 </section>
       
@@ -432,21 +426,28 @@ ga('send', 'pageview');
       </a>
     </div>
     <div id="footer-info" class="inner">
-      &copy; 2014 - 2018 叉起来就可以烧<br>
+      &copy; 2014 - 2019 叉起来就可以烧<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
     </div>
   </div>
 </footer>
     
 
-<script>
-  var disqus_shortname = 'csbun';
-  (function(){
-    var dsq = document.createElement('script');
-    dsq.type = 'text/javascript';
-    dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+  (function() {
+    const gitalk = new Gitalk({
+      clientID: '445f3ebe09ddd1d6a1eb',
+      clientSecret: '677a9844625ec22c3e39dcea819678794bb84d71',
+      repo: 'blog',
+      owner: 'csbun',
+      admin: ['csbun'],
+      id: location.pathname,      // Ensure uniqueness and length less than 50
+      // createIssueManually: true,
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+    });
+    gitalk.render('comments')
   })();
 </script>
 

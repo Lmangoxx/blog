@@ -196,7 +196,7 @@ ga('send', 'pageview');
 <p>如果已经安装过，就运行下面命令更新一下：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew update</span><br><span class="line">brew upgrade</span><br></pre></td></tr></table></figure>
 <p>附 <a href="http://facebook.github.io/react-native/docs/linux-windows-support.html" target="_blank" rel="noopener">Linux and Windows Support</a>。</p>
-<h2><span id="先跑个-ios-的起来试试">先跑个 IOS 的起来试试</span></h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">react-<span class="keyword">native</span> <span class="keyword">init</span> AwesomeProject</span><br><span class="line">cd AwesomeProject</span><br></pre></td></tr></table></figure>
+<h2><span id="先跑个-ios-的起来试试">先跑个 IOS 的起来试试</span></h2><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">react-<span class="keyword">native</span> init AwesomeProject</span><br><span class="line">cd AwesomeProject</span><br></pre></td></tr></table></figure>
 <p>在 Xcode 中打开 <code>ios/AwesomeProject.xcodeproj</code>（或直接运行这个文件），点击左上角的 <code>▶</code> 即会打开 Xcode 自带的 Simulator，非常方便。</p>
 <p>在 Simulator 中使用快捷键 <code>cmd-d</code> 打开开发菜单，选择 <code>Enable Live Relaod</code>。然后修改 <code>index.ios.js</code>：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ...</span></span><br><span class="line"><span class="keyword">var</span> &#123;</span><br><span class="line">  AppRegistry,</span><br><span class="line">  StyleSheet,</span><br><span class="line">  Text,</span><br><span class="line">  View,</span><br><span class="line">  SwitchIOS, <span class="comment">// add</span></span><br><span class="line">&#125; = React;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> AwesomeProject = React.createClass(&#123;</span><br><span class="line">  render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;View style=&#123;styles.container&#125;&gt;</span><br><span class="line">        &lt;Text style=&#123;styles.welcome&#125;&gt;</span><br><span class="line">          Welcome to React-Native!</span><br><span class="line">        &lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">        &lt;Text style=&#123;styles.instructions&#125;&gt;</span></span><br><span class="line"><span class="regexp">          To get started, edit index.ios.js</span></span><br><span class="line"><span class="regexp">        &lt;/</span>Text&gt;</span><br><span class="line">        &lt;Text style=&#123;styles.instructions&#125;&gt;</span><br><span class="line">          Press Cmd+R to reload,&#123;<span class="string">'\n'</span>&#125;</span><br><span class="line">          Cmd+D or shake <span class="keyword">for</span> dev menu</span><br><span class="line">        &lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">        &#123;/</span>* add *<span class="regexp">/&#125;</span></span><br><span class="line"><span class="regexp">        &lt;SwitchIOS /</span>&gt;</span><br><span class="line">      &lt;<span class="regexp">/View&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;);</span></span><br></pre></td></tr></table></figure>
@@ -244,9 +244,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://csbun.github.io/blog/2015/12/starting-react-native-with-android/" data-id="cjplck7fw0015qcq91h9m6w78" class="article-share-link">Share</a>
-      
-        <a href="http://csbun.github.io/blog/2015/12/starting-react-native-with-android/#disqus_thread" class="article-comment-link">Comments</a>
+      <a data-url="http://csbun.github.io/blog/2015/12/starting-react-native-with-android/" data-id="cjq9702gs00166cq90kb6pwca" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Native/">Native</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/React/">React</a></li></ul>
@@ -279,11 +277,7 @@ ga('send', 'pageview');
 </article>
 
 
-<section id="comments">
-  <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  </div>
-</section>
+  <section id="comments"></section>
 
 </section>
       
@@ -421,21 +415,28 @@ ga('send', 'pageview');
       </a>
     </div>
     <div id="footer-info" class="inner">
-      &copy; 2014 - 2018 叉起来就可以烧<br>
+      &copy; 2014 - 2019 叉起来就可以烧<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
     </div>
   </div>
 </footer>
     
 
-<script>
-  var disqus_shortname = 'csbun';
-  (function(){
-    var dsq = document.createElement('script');
-    dsq.type = 'text/javascript';
-    dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+  (function() {
+    const gitalk = new Gitalk({
+      clientID: '445f3ebe09ddd1d6a1eb',
+      clientSecret: '677a9844625ec22c3e39dcea819678794bb84d71',
+      repo: 'blog',
+      owner: 'csbun',
+      admin: ['csbun'],
+      id: location.pathname,      // Ensure uniqueness and length less than 50
+      // createIssueManually: true,
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+    });
+    gitalk.render('comments')
   })();
 </script>
 
